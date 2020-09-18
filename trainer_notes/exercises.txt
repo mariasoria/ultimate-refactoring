@@ -1,0 +1,49 @@
+Refactoring workshop notes:
+
+- Exercises
+   - value and reference
+   - implementationChange
+       - make "int price" a list "List<int>"  
+   - signatureChange:
+       - first do it using parallel change, like in JavaScript
+       - second, try something smarter
+             - parallel change + inline
+             - parameter object
+       - csv builder, remove middle method
+   - implementationChange:
+       - replace int with Price in add method
+       - replace return value of calculateTotalPrice to make it Price
+          - parallel implementation and manual replacement of callers
+          - parallel implementation + inline method
+          - wrap return object
+       - Player constructors
+- moveResponsibility:
+       - God class
+            1 - use extract delegate to move them to a new class
+            2 - add pameter + make static + convert to instance
+            3 - create class depencency + move + encapsulate field +
+             inline
+            4 - pull down
+       - InvoiceService - feature envy:
+            1 - make static + move + convert to instance
+            2 - extract parameter + move
+            3 - extract method + move
+            4 - remove InvoiceService automatically
+                - inheritance + create default constructor + inline constructor
+   - replaceType:
+       - change the interface so that NewVehicleQuery replaces OldVehicleQuery
+         - the old class extends the new one, then pull members up and finally inline
+  - dependencyChange:
+      - SpecificFinder:
+          - automagic: replace inheritance with delegation
+          - manually:
+               - use "this" for have a single instance of finder
+               - introduce finder parameter in constructor in the last step
+   - pipelines:
+       - to streams using narrow changes
+   - legacy code
+      Entity: less surprise, sinks for unit testing, responsibility
+      Encryptor
+   - Replace Primitive Constants with Type
+   - Safe unwrap
+ 

@@ -1,0 +1,13 @@
+Feedback:
+- Mas ejercicios, explicados y slides.
+- Explicar los refactorings que trae el IDE, quizas usando la doc de IntelliJ,
+para la gente que no conoce los refactors de Martin Fowler.
+- Hacer review de ejercicios de: values, references y constructores.
+- Crear una pair programming cheat sheet.
+- Manual de resumen
+
+
+
+
+
+   

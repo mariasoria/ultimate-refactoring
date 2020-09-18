@@ -1,0 +1,47 @@
+Intro concepts:
+
+- Pair programming is essential
+   - Explain pair programming
+   - Cost vs Risk when refactoring large codebases
+   - This is not a competition, you don't have to demonstrate anything
+   - Be honest, use your empathy.
+
+- What is refactoring:
+   - Original book and catalog by Martin Fowler
+   - Code smells
+   - Refactoring to patterns - Joshua Kerievsky
+   - Narrow Chage and Parallel Change - Joshua Kerievsky
+   - Power of the IDEs
+
+- Benefits of refactoring:
+   - Enrich de codebase with business knowledge
+   - Lower the maintenance cost
+   - Better understanding of the code
+   - Collective code ownership
+   - Simplicity
+   - Testability
+   - Why to be proficient? the more you do it, the more likely you will do it!
+      - 10 minutes refactoring per day. Warm up with a refactoring kata
+
+- Approaches:
+   - ROI
+   - Plan for the strategy first
+   - Mikado method approach
+   - Baby steps, always on green. Do not lean on the compiler
+   - Run the tests constantly. Check-in code constantly
+   - Micro commits, exploratory refactorings and branches:
+       - Scratch refactorings according to M. Feathers
+       - Review the diff before the commit
+   - The low hanging fruit. Go for the easy and obvious parts first.   
+   -  Refactor on green, not on red
+   -  Have a test plan, test manually and throughly
+   - Review IntelliJ analysis tools for dependencies
+   - IDE:
+       - Some refactors require underlying text, some others just the cursor 
+     on top.
+   - Narrow Change & Parallel Change
+
+
+
+
+   

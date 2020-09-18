@@ -1,0 +1,9 @@
+- TODO: Refactoring legacy code:
+   - Sinks: Inheritance, visibility
+   - Mocking: mocks, power mock
+       - How to change the design to make code testable step by step
+- Constructor fusion is now obsolete, find a better reason to
+  replace constructor with factory method
+
+
+  
