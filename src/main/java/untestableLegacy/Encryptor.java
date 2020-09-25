@@ -1,46 +1,16 @@
 package untestableLegacy;
 
 import java.security.InvalidParameterException;
+import java.util.function.Function;
 
 public class Encryptor {
-	
-	public String cryptWord(String word)
-	{
+
+	private void findSpacesThrowException(String word) {
 		if (word.contains(" "))
 			throw new InvalidParameterException();
-		
-		char[] wordArray = word.toCharArray();
-		String newWord = "";
-		for (int i = 0; i < word.length(); i++)
-		{
-			int charValue = wordArray[i];
-			newWord += String.valueOf((char)( charValue + 2));
-		}
-		
-		return newWord;
-	}
-	
-	public String cryptWordToNumbers(String word)
-	{
-		if (word.contains(" "))
-			throw new InvalidParameterException();
-		
-		char[] wordArray = word.toCharArray();
-		String newWord = "";
-		for (int i = 0; i < word.length(); i++)
-		{
-			int charValue = wordArray[i];
-			newWord += String.valueOf(charValue + 2);
-		}
-		
-		return newWord;
 	}
 
-	public String cryptWord(String word, String charsToReplace)
-	{
-		if (word.contains(" "))
-			throw new InvalidParameterException();
-		
+	private String toCesarEncryptionAndReplace(String word, String charsToReplace) {
 		char[] wordArray = word.toCharArray();
 		char[] replacement = charsToReplace.toCharArray();
 		char[] result = wordArray.clone();
@@ -51,38 +21,61 @@ public class Encryptor {
 				if (replacement[j] == wordArray[i])
 				{
 					int charValue = wordArray[i];
-					result[i] = (char)( charValue + 2);		
+					result[i] = (char)( charValue + 2);
 				}
 			}
 		}
 		return String.valueOf(result);
 	}
-	
-	public String cryptSentence(String sentence)
-	{
+
+	private String toCesarEncryption(String sentence, Function<Integer, String> functionToTransform) {
 		char[] sentenceArray = sentence.toCharArray();
 		String newWord = "";
-		for (int i = 0; i < sentence.length(); i++)
-		{
+		for (int i = 0; i < sentence.length(); i++) {
 			int charValue = sentenceArray[i];
-			newWord += String.valueOf((char)( charValue + 2));
+			newWord += functionToTransform.apply(charValue);
 		}
-		
 		return newWord;
 	}
-	
-	public String[] getWords(String sentence)
-	{
-		return sentence.split(" ");
-	}
-	
-	public void printWords(String sentence)
-	{
-		String[] words = getWords(sentence);
+
+	private void wrapperOutputBetweenArrows(String sentence) {
+		String[] words = sentence.split(" ");
 		for (String word : words)
 		{
 			System.out.print("<" + word + ">");
 		}
 	}
-	
+
+	private Function<Integer, String> toNumberValue() {
+		return charValue1 -> String.valueOf((charValue1 + 2));
+	}
+
+	private Function<Integer, String> toCharValue() {
+		return charValue1 -> String.valueOf((char) (charValue1 + 2));
+	}
+
+	public String cryptWord(String word) {
+		findSpacesThrowException(word);
+		return toCesarEncryption(word, toCharValue());
+	}
+
+	public String cryptWordToNumbers(String word) {
+		findSpacesThrowException(word);
+		return toCesarEncryption(word, toNumberValue());
+	}
+
+	public String cryptWord(String word, String charsToReplace) {
+		findSpacesThrowException(word);
+		return toCesarEncryptionAndReplace(word, charsToReplace);
+	}
+
+	public String cryptSentence(String sentence) {
+		return toCesarEncryption(sentence, toCharValue());
+	}
+
+	public void printWords(String sentence)
+	{
+		wrapperOutputBetweenArrows(sentence);
+	}
+
 }
